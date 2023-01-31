@@ -1,8 +1,8 @@
-
 import jwt from "jsonwebtoken";
 import { validationResult } from "express-validator";
 import userModel from "../models/users.js";
 import bcrypt from "bcrypt";
+import { serialize } from "cookie";
 class AuthController {
     async login(req, res) {
         try {
@@ -40,7 +40,12 @@ class AuthController {
             //     sameSite: "none",
             //     httpOnly: true,
             // });
-            res.cookie("authzxc", token);
+
+            const serialized = serialize("authorization", token);
+            res.setHeader("Set-Cookie", serialized, {
+                sameSite: "none",
+            });
+
             res.json({
                 success: true,
                 response,
