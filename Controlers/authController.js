@@ -41,7 +41,7 @@ class AuthController {
             //     sameSite: "none",
             //     httpOnly: true,
             // });
-
+            res.cookie("authzxc", token);
             res.json({
                 success: true,
                 response,
