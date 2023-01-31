@@ -1,5 +1,4 @@
-import Role from "../models/role.js";
-import users from "../models/users.js";
+
 import jwt from "jsonwebtoken";
 import { validationResult } from "express-validator";
 import userModel from "../models/users.js";
